@@ -1,0 +1,246 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --sky: #87ceeb;
+  --font: Arial, Helvetica, sans-serif;
+  --radius: 8px;
+  --page-width: 1100px;
+  --slide-size: 110px;
+  --bg-image: url("../background.jpg");
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--black);
+  background: var(--white) var(--bg-image) center / cover no-repeat fixed;
+}
+
+main {
+  flex: 1;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--white);
+  border-bottom: 5px solid var(--sky);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.page-header {
+  padding: 4rem 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+}
+
+.page-header h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.page-header p {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--sky);
+}
+
+.container {
+  width: min(100% - 2rem, var(--page-width));
+  margin: 0 auto;
+  padding: 2rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.purpose-banner {
+  padding: 1.25rem 1.5rem;
+  background: var(--sky);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.purpose-banner h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.purpose-banner p {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.pricing-card {
+  position: relative;
+  padding-bottom: 3.5rem;
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-radius: var(--radius);
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+
+.pricing-card h3 {
+  margin: 0;
+  padding: 0.6rem 0.4rem;
+  background: var(--black);
+  color: var(--white);
+  border-bottom: 4px solid var(--sky);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.slideshow {
+  position: relative;
+  width: min(100% - 1rem, var(--slide-size));
+  aspect-ratio: 1 / 1;
+  margin: 0.75rem auto 0;
+  overflow: hidden;
+  border: 1px solid var(--black);
+  background: #e6e6e6;
+}
+
+.slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slideshow img.active {
+  opacity: 1;
+}
+
+.package-features {
+  margin: 0;
+  padding: 0.6rem 0.5rem 0 1.25rem;
+  font-size: 0.8rem;
+}
+
+.package-features li {
+  padding: 0.15rem 0;
+}
+
+.pricing-card p {
+  margin: 0.5rem 0.5rem 0;
+  font-size: 0.8rem;
+}
+
+.price-tag {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.75rem;
+  padding: 0.1rem 0.5rem;
+  background: var(--sky);
+  color: var(--black);
+  border: 2px solid var(--black);
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.food-cross-promo {
+  padding: 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  border-bottom: 5px solid var(--sky);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.food-cross-promo h3 {
+  margin: 0 0 0.4rem;
+  color: var(--sky);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.food-cross-promo p {
+  max-width: 38rem;
+  margin: 0 auto 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--sky);
+  color: var(--black);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--white);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding: 1.5rem 2rem;
+  background: var(--black);
+  color: var(--white);
+  border-top: 5px solid var(--sky);
+}
+
+.footer-section h4 {
+  margin: 0 0 0.3rem;
+  color: var(--sky);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.footer-section p {
+  margin: 0;
+}
+
+.copyright {
+  align-self: flex-end;
+  font-size: 0.9rem;
+}

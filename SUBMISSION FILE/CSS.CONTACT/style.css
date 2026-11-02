@@ -1,0 +1,561 @@
+/* ==========================================================================
+   MORULA VIEW CAR WASH & STREET FOOD  |  CONTACT PAGE STYLESHEET
+   Theme: black, white and sky blue
+   Save as: CSS.CONTACT/style.css
+   Sections: 1 Theme  2 Base  3 Header  4 Hero  5 Layout  6 Cards
+             7 Forms  8 Buttons  9 Email preview  10 Directions  11 Footer
+             12 Enquiry form  13 Mobile  14 Accessibility
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;600;700&display=swap");
+
+
+/* 1. THEME SETTINGS
+   Change a value here and the whole page follows. */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --sky: #87ceeb;                      /* the sky blue accent */
+  --panel: rgba(0, 0, 0, 0.82);        /* dark card background */
+  --text-soft: #e4e4e4;
+
+  --font-heading: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Barlow", "Segoe UI", Arial, sans-serif;
+
+  --radius: 10px;
+  --page-width: 1200px;
+}
+
+
+/* 2. BASE */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;                       /* lets the footer sit at the very bottom */
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--white);
+  background-color: var(--black);
+  /* Dark layer on top of background.jpg so text stays readable.
+     If the picture is missing, the page simply stays black.
+     Change the path if your picture lives somewhere else. */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
+    url("../background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0.25rem 0;
+}
+
+a {
+  color: var(--sky);
+}
+
+
+/* 3. HEADER  (white bar, like the wireframe) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding: 1rem 1.5rem;
+  background: var(--white);
+  color: var(--black);
+  border-bottom: 4px solid var(--sky);
+}
+
+header h1 {
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Ready for the menu in the wireframe (Home, Wash, Food, Event, Contact).
+   Add <nav><ul><li><a href="..."> inside <header> and it styles itself. */
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header nav a {
+  color: var(--black);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+header nav a:hover,
+header nav a.active,
+header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--sky);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+
+/* 4. MAIN + HERO  ("Get In Touch With Us" banner) */
+main {
+  flex: 1;                             /* pushes the footer down */
+  width: 100%;
+  padding: 2rem 1rem 3rem;
+}
+
+.page-header {
+  max-width: var(--page-width);
+  margin: 0 auto 2rem;
+  padding: clamp(2.5rem, 8vw, 5rem) 1.5rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--sky);
+  border-radius: var(--radius);
+}
+
+.page-header h2 {
+  font-size: clamp(2.4rem, 7.5vw, 4.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.page-header h2::after {               /* sky blue bar under the title */
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 4px;
+  margin: 1.25rem auto 0;
+  background: var(--sky);
+}
+
+.page-header p {
+  max-width: 60ch;
+  margin: 1.25rem auto 0;
+  font-size: 1.15rem;
+  color: var(--text-soft);
+}
+
+
+/* 5. LAYOUT
+   Wrapper div -> two-column grid (info card left, form card right).
+   I could not see lines 27-34 of your HTML, so these use structure
+   (:has) instead of class names. If you add classes later, swap them in. */
+main > div {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+main div:has(> .contact-form-card) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+
+/* 6. CARDS */
+main section:has(> .info-group),       /* contact details + map + hours */
+.contact-form-card {
+  min-width: 0;
+  padding: 1.75rem;
+  background: var(--panel);
+  border: 2px solid var(--sky);
+  border-radius: var(--radius);
+}
+
+main section > h3 {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--sky);
+  border-bottom: 1px solid rgba(135, 206, 235, 0.45);
+}
+
+.info-group {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--sky);
+}
+
+.info-group:last-child {
+  margin-bottom: 0;
+}
+
+.info-group h4 {
+  margin-bottom: 0.3rem;
+  font-size: 1.3rem;
+  color: var(--sky);
+}
+
+.info-group p {
+  color: var(--text-soft);
+}
+
+.phone-link {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--sky);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.phone-link:hover {
+  color: var(--sky);
+}
+
+/* Google map: width/height set here beat the 600x450 in the HTML */
+iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  margin: 0.75rem 0;
+  border-radius: 8px;
+  outline: 2px solid var(--sky);       /* outline, because the HTML has border:0 inline */
+}
+
+
+/* 7. FORMS (contact form and enquiry form share these) */
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  color: var(--black);
+  background: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 6px;
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+::placeholder {
+  color: #666666;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--sky);
+  outline: 3px solid rgba(135, 206, 235, 0.55);
+  outline-offset: 1px;
+}
+
+/* spacing between fields (also catches the three plain divs in your email block) */
+.form-group,
+.contact-form-card form > div,
+#emailForm > div {
+  margin-bottom: 1.1rem;
+}
+
+
+/* 8. BUTTONS
+   Solid sky blue = main action (Send Message, Submit Enquiry, Send Email).
+   Outlined = helper action (Validate & Compile Email). */
+button,
+.btn-submit,
+#sendEmailBtn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  background: var(--sky);
+  border: 2px solid var(--sky);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+button:hover,
+.btn-submit:hover,
+#sendEmailBtn:hover {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+}
+
+button[type="button"] {
+  color: var(--sky);
+  background: transparent;
+}
+
+button[type="button"]:hover {
+  color: var(--black);
+  background: var(--sky);
+  border-color: var(--sky);
+}
+
+.btn-submit,
+button[type="submit"] {
+  width: 100%;
+}
+
+
+/* 9. COMPILED EMAIL PREVIEW  (hidden until your JavaScript shows it) */
+#outputSection {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(135, 206, 235, 0.1);
+  border: 2px dashed var(--sky);       /* dashed = a draft, not sent yet */
+  border-radius: 8px;
+}
+
+#outputSection h4 {
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
+  color: var(--sky);
+}
+
+#outputSection p {
+  overflow-wrap: anywhere;
+}
+
+#outputSection strong {
+  color: var(--sky);
+}
+
+#displayMessage {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: var(--black);
+  border-left: 3px solid var(--sky);
+}
+
+
+/* 10. DIRECTIONS BOX  (solid sky blue strip: "Finding Morula View Premises") */
+.directions-box {
+  padding: 1.75rem;
+  color: var(--black);
+  background: var(--sky);
+  border: 2px solid var(--sky);
+  border-radius: var(--radius);
+}
+
+main section.directions-box > h3 {
+  color: var(--black);
+  border-bottom-color: var(--black);
+}
+
+.directions-box p {
+  max-width: 70ch;
+  font-size: 1.1rem;
+}
+
+.directions-box strong {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* 11. FOOTER  (Location | Enquiry form | Copyright)
+   If you move the enquiry form out of the footer later, this becomes
+   Location on the left and Copyright on the right, like the wireframe. */
+footer {
+  padding: 2rem 1.5rem 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  border-top: 4px solid var(--sky);
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 0 1 18rem;
+}
+
+.footer-section h4 {
+  margin-bottom: 0.4rem;
+  font-size: 1.4rem;
+  color: var(--sky);
+}
+
+.footer-section p,
+.copyright {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.copyright {
+  flex: 0 1 15rem;
+}
+
+/* safety net in case copyright sits directly inside <footer> */
+footer > .copyright {
+  max-width: var(--page-width);
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(135, 206, 235, 0.45);
+}
+
+
+/* 12. ENQUIRY FORM  (the .container block inside the footer) */
+.footer-content .container {
+  flex: 1 1 26rem;
+  min-width: 0;
+}
+
+footer > .container {
+  max-width: var(--page-width);
+  margin: 1.5rem auto 0;
+}
+
+footer .container {
+  padding: 1.5rem;
+  border: 2px solid var(--sky);
+  border-radius: var(--radius);
+}
+
+footer .container h2 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--sky);
+}
+
+.subtitle {
+  margin-bottom: 1.25rem;
+  color: var(--text-soft);
+}
+
+/* Extra questions appear only for the chosen enquiry type.
+   Your JavaScript can show them with style.display or by adding one of
+   the classes below. */
+.dynamic-section {
+  display: none;
+}
+
+.dynamic-section.active,
+.dynamic-section.show,
+.dynamic-section.visible {
+  display: block;
+}
+
+/* "Enquiry Processed" card: stays hidden until your JavaScript writes text */
+#responseCard {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(135, 206, 235, 0.12);
+  border: 2px solid var(--sky);
+  border-left-width: 8px;
+  border-radius: 8px;
+}
+
+#responseCard:has(#responseText:empty) {
+  display: none;
+}
+
+#responseTitle {
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  color: var(--sky);
+}
+
+#responseText {
+  margin: 0;
+}
+
+
+/* 13. MOBILE & TABLET */
+@media (max-width: 900px) {
+  main div:has(> .contact-form-card) {
+    grid-template-columns: minmax(0, 1fr);   /* cards stack */
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 0.85rem 1rem;
+  }
+
+  main {
+    padding: 1.25rem 0.75rem 2rem;
+  }
+
+  main section:has(> .info-group),
+  .contact-form-card,
+  .directions-box,
+  footer .container {
+    padding: 1.25rem;
+  }
+
+  iframe {
+    height: 240px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-section,
+  .copyright,
+  .footer-content .container {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+
+/* 14. ACCESSIBILITY */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+}
+
+header a:focus-visible {
+  outline-color: var(--black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

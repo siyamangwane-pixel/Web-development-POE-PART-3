@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="SIYABONGA MANGWANE">
+    <title>Document</title>
+
+    <link href="CSS.CONTACT/style.css" rel="stylesheet">
+    <link href="CSS.CONTACT/script.js" rel="script">
+    
+
+</head>
+<body>
+
+    <header>
+        <h1>MORULA VIEW CAR WASH, STREET FOOD</h1>
+    </header>
+
+    <main>
+        
+        <section class="page-header">
+            <h2>Get In Touch With Us</h2>
+            <p>Reach out to us for vehicle washing inquiries, street food orders, or Morula Epic 29 event updates.</p>
+        </section>
+
+        <div class="container">
+            
+            <div class="contact-grid">
+            
+                <section class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-group">
+                        <h4>Phone & WhatsApp</h4>
+                        <p>MTN / WhatsApp: <a href="tel:0796396928" class="phone-link">079 639 6928</a></p>
+                        <p>Vodacom: <a href="tel:0663193491" class="phone-link">066 319 3491</a></p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Venue Address & Location</h4>
+                        <p>E1678 B,The Backyard - Morula Epic 29</p>
+                        <p>Lefiso Village (Main Road before Taxi Rank)</p>
+                        <p>Postal Code: 0413</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.8916988709148!2d28.890357899999994!3d-24.935759099999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec0637e069009d1%3A0x291ca517c8704666!2sThe%20Backyard%20-%20Morula%20Epic%2029!5e0!3m2!1sen!2sza!4v1793401012963!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                        <p>Northwestern Outskirts of Mpumalanga</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Operating Hours</h4>
+                        <p>MONDAY - SUNDAY: 08:00 AM - 18:00 PM</p>
+                    </div>
+                </section>
+
+                <section class="contact-form-card">
+                    <h3>Send Us A Message/Email</h3>
+                    
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+
+                    <form id="emailForm">
+                    <div>
+                        <label for="clientName">Customer Name</label>
+                        <input type="text" id="clientName" placeholder="Enter your name" required>
+                    </div>
+
+                    <div>
+                        <label for="clientEmail">Customer Email Address</label>
+                        <input type="email" id="clientEmail" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div>
+                        <label for="clientMessage">Message Content</label>
+                        <textarea id="clientMessage" rows="4" placeholder="Enter the message you want to validate and send..." required></textarea>
+                    </div>
+
+                    <button type="button" onclick="validateAndCompile()">Validate & Compile Email</button>
+                </form>
+
+                <div id="outputSection" style="display: none;">
+                    <h4>Compiled Email Preview</h4>
+                    <p><strong>Recipient:</strong> <span id="displayRecipient"></span></p>
+                    <p><strong>From:</strong> <span id="displaySender"></span></p>
+                    <p><strong>Validated Message:</strong></p>
+                    <p id="displayMessage"></p>
+      
+                    <a id="sendEmailBtn" href="#">Send Email to Recipient</a>
+                    </div>
+                      </div>
+                          </div>
+                        
+                          <div class="form-group">
+                            <label for="service">Inquiry Type</label>
+                            <select id="service" name="service">
+                                <option value="car-wash">Car Wash Service</option>
+                                <option value="food-order">The Best Kota Meun</option>
+                                <option value="event">Morula Epic 29 Event</option>
+                                <option value="general">General Query</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </section>
+
+            </div>
+
+            <section class="directions-box">
+                <h3>Finding Morula View Premises</h3>
+                <p>Located at <strong>Lefiso Main Road before the Taxi Rank</strong></p>
+                <p>Stop by for reliable car care, fresh street food, or event inquiries</p>
+            </section>
+
+        </div>
+    </main>
+
+    <h2>Enquiry Form</h2>
+    <p class="subtitle">Select your enquiry type to check details, pricing, and availability.</p>
+
+    <form id="enquiryForm" onsubmit="handleFormSubmit(event)">
+
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" required placeholder="John Doe">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="johndoe@gmail.com">
+        </div>
+
+        <div class="form-group">
+            <label for="enquiryType">Enquiry Type</label>
+            <select id="enquiryType" required onchange="handleTypeChange()">
+                <option value="" disabled selected>Select an option...</option>
+                <option value="services">Services</option>
+                <option value="products">Products</option>
+                <option value="volunteer">Volunteer Opportunity</option>
+                <option value="sponsor">Sponsorship</option>
+            </select>
+        </div>
+
+        <div id="servicesSection" class="dynamic-section">
+            <div class="form-group">
+                <label for="serviceType">Select Service</label>
+                <select id="serviceType">
+                    <option value="Carwashservices">Car Wash Services</option>
+                    <option value="Streetfoodmenu">Street Food Menu</option>
+                    <option value="MorluaEpic29">Morlua Epic 29</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="productsSection" class="dynamic-section">
+            <div class="form-group">
+                <label for="productType">Select Product</label>
+                <select id="productType">
+                    <option value="Carwashservices">Car Wash Services</option>
+                    <option value="Streetfoodmenu">Street Food Menu</option>
+                    <option value="MorluaEpic29">Morlua Epic 29</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" min="1" max="10" value="1">
+            </div>
+        </div>
+
+        <div id="volunteerSection" class="dynamic-section">
+            <div class="form-group">
+                <label for="availability">Your Availability</label>
+                <select id="availability">
+                    <option value="Weekdays">Weekdays</option>
+                    <option value="Weekends">Weekends</option>
+                    <option value="Flexible">Flexible / On-call</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="sponsorSection" class="dynamic-section">
+            <div class="form-group">
+                <label for="sponsor morlua view">Sponsorship Morlua View</label>
+                <select id="sponsor morlua view">
+                    <option value="Bronze (R150)">BRONZE (R150)</option>
+                    <option value="Silver (R250)">SILVER (R250)</option>
+                    <option value="Gold (R500)">GOLD (R500)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Additional Details / Questions</label>
+            <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+        </div>
+
+        <button type="submit">Submit Enquiry</button>
+    </form>
+
+    <div id="responseCard">
+        <h3 id="responseTitle">Enquiry Processed</h3>
+        <p id="responseText"></p>
+    </div>
+</div>
+        <div class="copyright">
+            &copy; 2026 Morula View Car Wash & Street Food. All Rights Reserved.
+        </div>
+    </footer>
+    
+</body>
+</html>

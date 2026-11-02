@@ -1,0 +1,287 @@
+/* =========================================================
+   MORULA VIEW CAR WASH & STREET FOOD  -  style.css
+   Theme: black, white and sky blue
+   ========================================================= */
+
+/* ---------- 1. THEME SETTINGS ---------- */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --sky-blue: #87ceeb;
+
+    --card-size: 540px;
+    --card-border: 4px;
+    --card-radius: 0px;
+    --card-gap: 40px;
+}
+
+/* ---------- 2. RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- 3. PAGE (BODY) ---------- */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--white);
+    background-color: var(--black);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("../background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ---------- 4. HEADER ---------- */
+header {
+    background-color: var(--black);
+    border-bottom: 4px solid var(--sky-blue);
+    padding: 28px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: clamp(1.4rem, 4vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--white);
+}
+
+/* ---------- 5. MAIN AREA AND GRID ---------- */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+        "target       about"
+        "target-show  about-show";
+    gap: var(--card-gap);
+    width: 100%;
+    max-width: calc(var(--card-size) * 2 + var(--card-gap));
+}
+
+.target-card      { grid-area: target; }
+.about-card       { grid-area: about; }
+.target-slideshow { grid-area: target-show; }
+.about-slideshow  { grid-area: about-show; }
+
+/* ---------- 6. PARAGRAPH SQUARES ---------- */
+.about-card,
+.target-card {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: start;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--black);
+    color: var(--white);
+    border: var(--card-border) solid var(--sky-blue);
+    border-radius: var(--card-radius);
+    overflow: visible;
+}
+
+.about-card h3,
+.target-card h3 {
+    color: var(--sky-blue);
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.about-card p,
+.target-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.about-card p + p,
+.target-card p + p {
+    margin-top: 12px;
+}
+
+/* ---------- 7. SLIDESHOW SQUARES ---------- */
+.slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: start;
+    background-color: var(--black);
+    border: var(--card-border) solid var(--sky-blue);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+}
+
+.slideshow::before {
+    content: "Pictures coming soon";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--sky-blue);
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--sky-blue);
+    border-radius: var(--card-radius);
+    cursor: pointer;
+}
+
+.prev { left: 12px; }
+.next { right: 12px; }
+
+.prev:hover,
+.next:hover {
+    background-color: var(--sky-blue);
+    color: var(--black);
+}
+
+.dots {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dots button {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    background-color: transparent;
+    border: 2px solid var(--sky-blue);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dots button.active {
+    background-color: var(--sky-blue);
+}
+
+.prev:focus-visible,
+.next:focus-visible,
+.dots button:focus-visible {
+    outline: 3px solid var(--white);
+    outline-offset: 2px;
+}
+
+/* ---------- 8. FOOTER ---------- */
+footer {
+    background-color: var(--black);
+    border-top: 4px solid var(--sky-blue);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+}
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-section h4 {
+    color: var(--sky-blue);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.copyright {
+    padding-left: 40px;
+    border-left: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+/* ---------- 9. RESPONSIVE QUERIES ---------- */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: minmax(0, var(--card-size));
+        justify-content: center;
+        grid-template-areas:
+            "about"
+            "about-show"
+            "target"
+            "target-show";
+    }
+}
+
+@media (max-width: 700px) {
+    .copyright {
+        padding-left: 0;
+        border-left: none;
+        text-align: center;
+    }
+}
+
+@media (max-width: 540px) {
+    main {
+        padding: 30px 16px;
+    }
+
+    .about-card,
+    .target-card {
+        aspect-ratio: auto;
+        padding: 24px;
+    }
+}
